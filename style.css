@@ -1,0 +1,14 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.formulaire {
+  width: 200px; /* Largeur de la boîte */
+  height: 150px; /* Hauteur de la boîte */
+  margin: 20px; /* Marges autour de la boîte */
+  padding: 10px; /* Rembourrage à l'intérieur de la boîte */
+  border: 1px solid #000; /* Bordure de la boîte */
+  background-color: #f0f0f0; /* Couleur de fond de la boîte */
+  color: #333; /* Couleur du texte à l'intérieur de la boîte */
+}
