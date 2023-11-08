@@ -1,87 +1,32 @@
-const boutoncreatecat = document.getElementById("create-cat");
-const conteneurCategorie = document.getElementById("conteneur-categories");
+const containerTask = document.getElementById("container-task");
 
-boutoncreatecat.addEventListener("click", function () {
-  const newCat = document.createElement("section");
-  newCat.className = "new-categorie";
+class Task {
+  constructor() {
+    this.nameInput = document.createElement("input");
+    this.nameInput.type = "text";
+    this.nameInput.placeholder = "Nom";
 
-  const inputNameCat = document.createElement("input");
-  inputNameCat.type = "text";
-  inputNameCat.placeholder = "Nom de la catégorie";
+    this.date_begin = document.createElement("input");
+    this.date_begin.type = "date";
 
-  const boutonValider = document.createElement("button");
-  boutonValider.textContent = "Valider";
+    this.date_end = document.createElement("input");
+    this.date_end.type = "date";
 
-  boutonValider.addEventListener("click", function () {
-    const titreCategorie = document.createElement("h1");
-    titreCategorie.textContent = inputNameCat.value;
-    newCat.appendChild(titreCategorie);
-    conteneurCategorie.appendChild(newCat);
-    inputNameCat.value = "";
+    this.commentInput = document.createElement("textarea");
+    this.commentInput.placeholder = "Commentaire";
+  }
 
-    newCat.removeChild(inputNameCat);
-    newCat.removeChild(boutonValider);
+  createInputElement() {
+    const container = document.createElement("form");
+    container.className = "formulaire";
+    container.appendChild(this.nameInput);
+    container.appendChild(this.date_begin);
+    container.appendChild(this.date_end);
+    container.appendChild(this.commentInput);
+    return container;
+  }
+}
 
-    const boutonAjouter = document.createElement("button");
-    boutonAjouter.textContent = "Créer un event";
+const task = new Task();
 
-    const newForm = document.createElement("form");
-    newForm.className = "formulaire";
-
-    // Création du champ Nom
-    const inputNom = document.createElement("input");
-    inputNom.type = "text";
-    inputNom.placeholder = "Name";
-    inputNom.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-      }
-    });
-    // Texte Date de Début :
-    const textStartDate = document.createElement("text");
-    textStartDate.textContent = " Date de début : ";
-
-    // Création du champ Date de début
-    const inputStartDate = document.createElement("input");
-    inputStartDate.type = "date";
-
-    // Texte Date de Fin :
-    const textEndDate = document.createElement("text");
-    textEndDate.textContent = " Date de fin: ";
-
-    // Création du champ Date de fin
-    const inputEndDate = document.createElement("input");
-    inputEndDate.type = "date";
-    inputEndDate.placeholder = "Date de fin";
-
-    // Création du commentaire
-    const inputCommentaire = document.createElement("textarea");
-    inputCommentaire.placeholder = "Commentaire";
-
-    // Création du Bouton Remove
-    const boutonRemove = document.createElement("button");
-    boutonRemove.className = "remove";
-    boutonRemove.textContent = "Remove";
-    boutonRemove.addEventListener("click", function () {
-      conteneurCategorie.removeChild(newForm);
-    });
-
-    newForm.appendChild(inputNom);
-    newForm.appendChild(textStartDate);
-    newForm.appendChild(inputStartDate);
-    newForm.appendChild(textEndDate);
-    newForm.appendChild(inputEndDate);
-    newForm.appendChild(inputCommentaire);
-    newForm.appendChild(boutonRemove);
-
-    boutonAjouter.addEventListener("click", function () {
-      conteneurCategorie.appendChild(newForm);
-    });
-
-    newCat.appendChild(boutonAjouter);
-  });
-
-  newCat.appendChild(inputNameCat);
-  newCat.appendChild(boutonValider);
-  conteneurCategorie.appendChild(newCat);
-});
+containerTask.appendChild(task.createInputElement());
